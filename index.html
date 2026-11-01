@@ -1,49 +1,311 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <link rel="stylesheet" href="styles.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  <div class="container">
-    <div class="date">
-      <p id="date">Date: </p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f2ea" />
+    <meta
+      name="description"
+      content="Two dice. A little suspense. Roll beautifully animated 3D dice, chase a nine or more, and follow your story one roll at a time."
+    />
+    <meta property="og:title" content="DiceFlip — Good times. Great rolls." />
+    <meta
+      property="og:description"
+      content="A playful two-dice classic. Nine or more wins, eight is a draw, and every roll is a fresh chance."
+    />
+    <meta property="og:type" content="website" />
+    <title>DiceFlip — Good times. Great rolls.</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="dice.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#game">Skip to the dice</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="wordmark" href="./" aria-label="DiceFlip home"
+          ><span class="brand-die" aria-hidden="true"
+            ><i></i><i></i><i></i></span
+          >diceflip<span class="brand-dot">.</span></a
+        >
+        <nav aria-label="Main navigation">
+          <button type="button" class="help-button" id="help-open">
+            <span aria-hidden="true">?</span> How to play</button
+          ><a
+            class="source-link"
+            href="https://github.com/fernandohmachado8/DiceFlip"
+            target="_blank"
+            rel="noopener noreferrer"
+            >View source <span aria-hidden="true">↗</span
+            ><span class="sr-only"> (opens in a new tab)</span></a
+          >
+        </nav>
+      </header>
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">
+            <span aria-hidden="true">✳</span> A little chance. A little joy.
+          </p>
+          <h1 id="page-title">Good times. <em>Great rolls.</em></h1>
+          <p>
+            Two dice. Thirty-six possibilities. One good reason to try again.
+          </p>
+          <span class="intro-doodle doodle-left" aria-hidden="true">✧</span
+          ><span class="intro-doodle doodle-right" aria-hidden="true">✳</span>
+        </section>
+        <section class="game-layout" id="game" aria-label="Dice rolling game">
+          <div class="game-card">
+            <div class="dice-table" id="dice-table" aria-label="Dice table">
+              <div class="table-topline">
+                <span
+                  ><i class="table-dot" aria-hidden="true"></i> THE ROLLING
+                  ROOM</span
+                ><span>TWO DICE · SIX SIDES</span>
+              </div>
+              <div class="table-oval" aria-hidden="true"></div>
+              <div class="table-corner corner-one" aria-hidden="true">+</div>
+              <div class="table-corner corner-two" aria-hidden="true">+</div>
+              <div class="dice-row">
+                <div class="dice-slot">
+                  <div
+                    class="die-scene"
+                    id="die-one"
+                    role="img"
+                    aria-label="First die, preview showing one"
+                  ></div>
+                  <span class="dice-caption"
+                    >DIE ONE <b id="face-one">—</b></span
+                  >
+                </div>
+                <span class="between-dice" aria-hidden="true">+</span>
+                <div class="dice-slot">
+                  <div
+                    class="die-scene"
+                    id="die-two"
+                    role="img"
+                    aria-label="Second die, preview showing six"
+                  ></div>
+                  <span class="dice-caption"
+                    >DIE TWO <b id="face-two">—</b></span
+                  >
+                </div>
+              </div>
+              <p class="table-note" id="table-note">
+                A fresh chance, every time.
+              </p>
+            </div>
+            <div class="game-bottom">
+              <div
+                class="result-row"
+                id="result-row"
+                data-outcome="ready"
+                aria-busy="false"
+              >
+                <div class="total-block">
+                  <span class="eyebrow">Your total</span
+                  ><strong id="total">—</strong>
+                </div>
+                <div class="result-copy">
+                  <span class="result-kicker" id="result-kicker"
+                    >THE NEXT ROLL IS YOURS</span
+                  >
+                  <h2 id="result-title">Feeling a little lucky?</h2>
+                  <p id="result-description">
+                    Nine or more wins. Eight is a draw.<br />The rest? A good
+                    excuse to roll again.
+                  </p>
+                </div>
+                <span
+                  class="result-symbol"
+                  id="result-symbol"
+                  aria-hidden="true"
+                  >↗</span
+                >
+              </div>
+              <button type="button" class="roll-button" id="roll-button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="4" y="4" width="16" height="16" rx="4" />
+                  <circle cx="8.5" cy="8.5" r="1" />
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="15.5" cy="15.5" r="1" /></svg
+                ><span id="roll-button-label">Roll the dice</span
+                ><span class="roll-arrow" aria-hidden="true">↗</span>
+              </button>
+              <p class="keyboard-note">
+                A little possibility at your fingertips.
+                <span>Press <kbd>Space</kbd> to roll</span>
+              </p>
+            </div>
+          </div>
+          <aside class="session-panel" aria-labelledby="session-title">
+            <div class="session-heading">
+              <div>
+                <p class="eyebrow">Your session</p>
+                <h2 id="session-title">The story so far.</h2>
+              </div>
+              <button
+                type="button"
+                class="reset-button"
+                id="reset-button"
+                aria-label="Reset session and clear roll history"
+                title="Reset session and clear roll history"
+                disabled
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 10a8 8 0 1 1 1 7M4 4v6h6" />
+                </svg>
+              </button>
+            </div>
+            <div class="session-stats">
+              <div><strong id="roll-count">00</strong><span>Rolls</span></div>
+              <div><strong id="win-count">00</strong><span>Wins</span></div>
+              <div>
+                <strong id="best-streak">00</strong><span>Best streak</span>
+              </div>
+            </div>
+            <div class="win-rate">
+              <span>Win rate</span><strong id="win-rate">—</strong>
+            </div>
+            <div class="outcome-bar" aria-hidden="true">
+              <span id="wins-bar"></span><span id="draws-bar"></span
+              ><span id="losses-bar"></span>
+            </div>
+            <div class="outcome-legend">
+              <span
+                ><i class="legend-win"></i>Wins <b id="legend-wins">0</b></span
+              ><span
+                ><i class="legend-draw"></i>Draws
+                <b id="legend-draws">0</b></span
+              ><span
+                ><i class="legend-loss"></i>Misses
+                <b id="legend-losses">0</b></span
+              >
+            </div>
+            <div class="history-heading">
+              <h3>Recent rolls</h3>
+              <span>Latest first</span>
+            </div>
+            <div class="history-empty" id="history-empty">
+              <span class="empty-die" aria-hidden="true"
+                ><i></i><i></i><i></i
+              ></span>
+              <h4>Every story starts somewhere.</h4>
+              <p>
+                Give the dice a roll.<br />We’ll keep the last eight right here.
+              </p>
+            </div>
+            <ol
+              class="history-list"
+              id="history-list"
+              aria-label="Last eight rolls, newest first"
+              hidden
+            ></ol>
+            <p class="session-note">
+              <span aria-hidden="true">◷</span> Just this visit. A clean slate
+              when you return.
+            </p>
+          </aside>
+        </section>
+        <section class="rules-strip" aria-label="The rules">
+          <div class="rules-intro">
+            <span aria-hidden="true">✳</span>
+            <p>Simple rules.<br /><em>Endless possibilities.</em></p>
+          </div>
+          <div class="rule">
+            <strong>9–12</strong>
+            <div>
+              <span class="rule-title">That’s a win.</span>
+              <p>High fives all around.</p>
+            </div>
+          </div>
+          <div class="rule">
+            <strong>8</strong>
+            <div>
+              <span class="rule-title">Right in the middle.</span>
+              <p>A draw. Give it another go.</p>
+            </div>
+          </div>
+          <div class="rule">
+            <strong>2–7</strong>
+            <div>
+              <span class="rule-title">There’s always next time.</span>
+              <p>The next roll is a fresh start.</p>
+            </div>
+          </div>
+        </section>
+        <p
+          class="sr-only"
+          id="game-announcement"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+        <noscript
+          ><p class="noscript-notice">
+            DiceFlip needs JavaScript to roll the dice. Turn it on in your
+            browser to play.
+          </p></noscript
+        >
+      </main>
+      <footer>
+        <a class="footer-wordmark" href="./">diceflip<span>.</span></a>
+        <p>
+          Made for the fun of it. By
+          <a
+            href="https://github.com/fernandohmachado8"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Fernando Machado<span class="sr-only">
+              (opens in a new tab)</span
+            ></a
+          >.
+        </p>
+        <span class="footer-signoff"
+          >A LITTLE LUCK GOES A LONG WAY
+          <span aria-hidden="true">↗</span></span
+        >
+      </footer>
     </div>
-    <div class="day-name" id="date">
-      <p class="day" id="day">DD/MM/YYYY at HH:MM</p>
-    </div>
-    <br>
-    <div class="dices" id="dices">
-      <div class="dice" id="dice1">
-        <img src="dice-1.svg" alt="dice1">
-        <p class="dice-label">Dice 1</p>
-      </div>
-      <div class="dice" id="dice2">
-        <img src="dice-1.svg" alt="dice">
-        <p class="dice-label">Dice 2</p>
-      </div>
-    </div>
-    <br>
-      <button id="btn">Roll Dice</button>
-      <br>
-      <div class="message">
-        Total: <span id="total">2</span>
-        <br>
-        more than 8: <span id="more-than-10">Win</span>
-        <br>
-        less than 8: <span id="less-than-10">Lose</span>
-        <br>
-        <br>
-        <h3>You didn't win: Try Again!</h1>
-      </div>
-      </div>
-
-  <script src="script.js"></script>
-</body>
-
+    <dialog id="help-dialog" aria-labelledby="help-title">
+      <form method="dialog">
+        <button class="dialog-close" aria-label="Close instructions">×</button>
+      </form>
+      <p class="eyebrow">Let’s get rolling</p>
+      <h2 id="help-title">Two dice. One simple rule.</h2>
+      <p>
+        Roll both dice and add the numbers. A total of
+        <strong>9 to 12 wins</strong>, <strong>8 is a draw</strong>, and
+        <strong>2 to 7 is a miss</strong>. There are no stakes or accounts—just
+        a small game of chance.
+      </p>
+      <ol>
+        <li>
+          Click <strong>Roll the dice</strong> or press <strong>Space</strong>.
+          Each roll is independent, and every die face has the same chance.
+        </li>
+        <li>
+          Your session tracks rolls, wins, and your best streak of consecutive
+          wins. A draw or miss breaks the streak.
+        </li>
+        <li>
+          The history keeps your last eight rolls.
+          <strong>Reset session</strong> clears all stats and history; reloading
+          also starts fresh.
+        </li>
+      </ol>
+      <p class="odds-note">
+        Of the 36 possible pairs, 10 win, 5 draw, and 21 miss. That’s about a
+        28% chance of a win on every roll.
+      </p>
+      <p class="dialog-small">
+        Keyboard friendly. Reduced-motion preferences are respected.
+      </p>
+      <form method="dialog">
+        <button class="dialog-done">
+          Got it. Let’s roll <span aria-hidden="true">↗</span>
+        </button>
+      </form>
+    </dialog>
+  </body>
 </html>

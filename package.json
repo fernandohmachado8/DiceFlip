@@ -1,0 +1,11 @@
+{
+  "name": "diceflip",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A playful two-dice game with animated 3D dice",
+  "scripts": {
+    "test": "node --test tests/game.test.mjs",
+    "check": "node --check script.js && node --check game.js && node --check dice.js"
+  }
+}
